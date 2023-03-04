@@ -10,6 +10,9 @@ const userController = {
                 res.status(500).json(err)
             }
         })
+    },
+    signUp : (req, res) => {
+        
     }
 }
 
