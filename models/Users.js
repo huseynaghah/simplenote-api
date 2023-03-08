@@ -15,7 +15,8 @@ const userSchema = new Schema({
     createDate : {
         type : Date,
         default : Date.now()
-    }
+    },
+    notes : {type : [Schema.Types.ObjectId], ref : "Note"}
 });
 
 const userModel = mongoose.model('User', userSchema);

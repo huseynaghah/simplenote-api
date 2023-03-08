@@ -20,6 +20,13 @@ const noteSchema = new Schema(
         isTrashed : {
             type: Boolean,
             default : false
+        },
+        tags : {
+            type : Array
+        },
+        userId : {
+            type: Schema.Types.ObjectId,
+            ref : "User"
         }
     }
 )

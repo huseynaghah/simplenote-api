@@ -2,7 +2,7 @@ const {noteModel} = require('../models/Notes');
 
 const noteController = {
   getAll : (req,res) =>{
-    noteModel.find({},function(err,doc){
+    noteModel.find({}).populate('userId').exec(function(err,doc){
       if (!err){
         res.json(doc)
       }else{
@@ -14,6 +14,7 @@ const noteController = {
     let newNote = new noteModel({
       content: req.body.content,
       lastModified : Date.now(),
+      userId : req.body.userId
     })
 
     newNote.save().then(function(err,doc){

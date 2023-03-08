@@ -3,7 +3,7 @@ const {userModel} = require('../models/Users');
 
 const userController = {
     getAll : (req,res) => {
-        userModel.find({},function(err,doc){
+        userModel.find({}).populate("notes").exec(function(err,doc){
             if(!err){
                 res.json(doc)
             }else{
@@ -14,6 +14,8 @@ const userController = {
     signUp : (req, res) => {
         
     }
+
+    
 }
 
 module.exports = { userController }
