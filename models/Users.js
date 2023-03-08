@@ -5,10 +5,10 @@ const { Schema } = mongoose
 const userSchema = new Schema({
     email : {
         type :String,
-        required : true},
+        required : true,
+        unique: true},
     password : {
-        type :String,
-        required : true},
+        type :String},
     confirmCode : {
         type :String,
         required : true},
@@ -16,7 +16,11 @@ const userSchema = new Schema({
         type : Date,
         default : Date.now()
     },
-    notes : {type : [Schema.Types.ObjectId], ref : "Note"}
+    notes : {type : [Schema.Types.ObjectId], ref : "Note"},
+    isConfirmed: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const userModel = mongoose.model('User', userSchema);
