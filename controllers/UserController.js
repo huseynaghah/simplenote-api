@@ -38,6 +38,21 @@ const userController = {
                 console.log(err);
               }
         })
+    },
+    checkByCode : (req,res) => {
+
+        let confirmCode = req.body.confirmCode;
+        userModel.findOne({confirmCode: confirmCode, isConfirmed: false}, function (err,doc) {
+            if(!err){
+                res.json(doc)
+            }else{
+                res.status(501).json(err)
+            }
+        })
+    },
+    verify : (req,res) => {
+        let confirmCode= req.body.confirmCode;
+        userModel.findOneAndUpdate()
     }
 
     
