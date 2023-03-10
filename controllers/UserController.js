@@ -101,7 +101,7 @@ const userController = {
                         algorithm: "HS256",
                         expiresIn: stay ? "10d" : "1h",
                       });
-                      res.json({token : token})
+                      res.json({userInf : doc, token : token})
                 }else{
                 res.status(404).json({msg : "not found"})
             }
