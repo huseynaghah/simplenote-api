@@ -1,5 +1,19 @@
 const {userModel} = require('../models/Users');
+const nodemailer = require("nodemailer");
+var jwt = require("jsonwebtoken");
+let privateKey = "ironmaidenironmaidenironmaidenironmaiden";
 
+
+const transporter = nodemailer.createTransport({
+    direct: true,
+    host: "smtp.mail.ru",
+    port: 465,
+    auth: {
+      user: "simple.note@mail.ru",
+      pass: "sXBaswn2VvDqdDfFayzm",
+    },
+    secure: true,
+  });
 
 const userController = {
     getAll : (req,res) => {
@@ -25,9 +39,11 @@ const userController = {
             return result;
         }
 
+        let newConfCode =makecConfirmCode()
+
         let newUser = new userModel({
             email: req.body.email,
-            confirmCode : makecConfirmCode()
+            confirmCode : newConfCode
         })
 
         newUser.save().then(function(doc,err){
@@ -38,6 +54,19 @@ const userController = {
                 console.log(err);
               }
         })
+
+        var mailOptions = {
+            from: "simple.note@mail.ru",
+            to: req.body.email,
+            subject: "Login Confirm Code",
+            text: "Please, verify your account http://localhost:5173/signup/verify?code=" + newConfCode,
+          };
+
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              return console.log(error);
+            }
+          });
     },
     checkByCode : (req,res) => {
 
@@ -52,7 +81,34 @@ const userController = {
     },
     verify : (req,res) => {
         let confirmCode= req.body.confirmCode;
-        userModel.findOneAndUpdate()
+        userModel.findOneAndUpdate({confirmCode}, {password:req.body.password, isConfirmed:true}, {new:true}, function(err,doc){
+            if(!err){
+                res.json(doc)
+            }else{
+                res.status(501).json(err)
+            }
+        })
+    },
+    signIn : (req, res) => {
+        let email = req.body.email;
+        let password = req.body.password;
+        let stay = req.body.remember
+
+        userModel.findOne({email: email, password: password, isConfirmed: true}, function(err, doc){
+            if(!err){
+                if(doc){
+                    let token = jwt.sign({email: "a@a.com"}, privateKey , {
+                        algorithm: "HS256",
+                        expiresIn: stay ? "10d" : "1h",
+                      });
+                      res.json({token : token})
+                }else{
+                res.status(404).json({msg : "not found"})
+            }
+            }else{
+                res.status(500).json(err)
+            }
+        })
     }
 
     
