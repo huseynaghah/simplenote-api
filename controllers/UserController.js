@@ -4,6 +4,7 @@ var jwt = require("jsonwebtoken");
 let privateKey = "ironmaidenironmaidenironmaidenironmaiden";
 
 
+
 const transporter = nodemailer.createTransport({
     direct: true,
     host: "smtp.mail.ru",
@@ -22,6 +23,15 @@ const userController = {
                 res.status(200).json(doc)
             }else{
                 res.status(501).json(err)
+            }
+        })
+    },
+    getCurrentUser: (req,res) =>{
+        userModel.findOne({_id: req.body._id}).populate("notes").exec(function (err,doc) {
+            if(!err){
+                res.status(200).json(doc.notes)
+            }else{
+                res.json(err)
             }
         })
     },
