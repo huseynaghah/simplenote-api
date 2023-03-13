@@ -4,7 +4,9 @@ const router = express.Router()
 
 
 router.get('/',noteController.getAll)
+router.get('/:id',noteController.getByUser)
 router.post('/',noteController.addNote)
+router.patch('/edit', noteController.editNote)
 
 
 module.exports = router;

@@ -25,16 +25,8 @@ const userController = {
                 res.status(501).json(err)
             }
         })
-    },
-    getCurrentUser: (req,res) =>{
-        userModel.findOne({_id: req.body._id}).populate("notes").exec(function (err,doc) {
-            if(!err){
-                res.status(200).json(doc.notes)
-            }else{
-                res.json(err)
-            }
-        })
-    },
+    }
+    ,
     signUp : (req, res) => {
 
         function makecConfirmCode() {
