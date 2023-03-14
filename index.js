@@ -45,7 +45,7 @@ const port = process.env.PORT || 3000
 // })
 
 
-mongoose.connect('mongodb+srv://haqverdievh:Georgia2019++@cluster0.knjxr8n.mongodb.net/simplenote', {
+mongoose.connect('mongodb+srv://simplenote-render:DYnImvdnqY3PP5dE@cluster0.knjxr8n.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -60,7 +60,7 @@ app.use('/api/users', userRouter);
 app.use('/api/notes', noteRouter);
 
 app.use('/', function(req, res) {
-  res.send("Welcome E-Commerce DB")
+  res.send("Welcome !")
 });
 
 
