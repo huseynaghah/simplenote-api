@@ -18,6 +18,7 @@ const transporter = nodemailer.createTransport({
 
 const userController = {
     getAll: (req, res) => {
+        console.log("Salam");
         userModel.find({}).populate("notes").exec(function (err, doc) {
             if (!err) {
                 res.status(200).json(doc)
