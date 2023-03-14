@@ -59,6 +59,10 @@ mongoose.connect('mongodb+srv://haqverdievh:Georgia2019++@cluster0.knjxr8n.mongo
 app.use('/api/users', userRouter);
 app.use('/api/notes', noteRouter);
 
+app.use('/', function(req, res) {
+  res.send("Welcome E-Commerce DB")
+});
+
 
 
 app.listen(port, () => {
