@@ -1,0 +1,26 @@
+{
+  "name": "simplenote-api",
+  "version": "1.0.0",
+  "description": "SimplenoteBackend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huseynaghah/simplenote-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huseynaghah/simplenote-api/issues"
+  },
+  "homepage": "https://github.com/huseynaghah/simplenote-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.10.3",
+    "nodemailer": "^6.9.1"
+  }
+}
