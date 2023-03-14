@@ -40,14 +40,30 @@ const noteController = {
     })
   },
   trashNote: (req,res) =>{
-    noteModel.findOneAndUpdate
+    let noteId = req.body._id
+    noteModel.findByIdAndDelete({_id: noteId}, {new:true}  ,function(err,doc){
+      if(!err){
+        res.send(doc)
+      }else{
+        res.status(501).send(err);
+        console.log(err);
+      }})
   },
-
-
-
   editNote: (req,res) => {
     let noteId = req.body._id
-    noteModel.findByIdAndUpdate({_id : noteId}, {content: req.body.content}, {new: true}, function (err,doc) {
+    noteModel.findByIdAndUpdate({_id : noteId}, {content: req.body.content, lastModified: req.body.lastModified}, {new: true}, function (err,doc) {
+      if(!err){
+        res.send(doc)
+      }else{
+        res.status(501).send(err);
+        console.log(err);
+      }
+    })
+  }
+  ,
+  pinNote: (req,res) => {
+    let noteId = req.body._id
+    noteModel.findByIdAndUpdate({_id : noteId}, {isPinned: req.body.isPinned}, {new: true}, function (err,doc) {
       if(!err){
         res.send(doc)
       }else{

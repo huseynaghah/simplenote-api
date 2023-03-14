@@ -44,7 +44,7 @@ let privateKey = "ironmaidenironmaidenironmaidenironmaiden";
 // })
 
 
-mongoose.connect('mongodb+srv://huseynaghah:Georgia2019++@cluster0.z3umjhj.mongodb.net/simplenote', {
+mongoose.connect('mongodb+srv://haqverdievh:Georgia2019++@cluster0.knjxr8n.mongodb.net/simplenote', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
