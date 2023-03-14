@@ -60,6 +60,6 @@ app.use('/api/notes', noteRouter);
 
 
 
-app.listen(8090, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server started on port 8090');
 });
