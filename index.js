@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 let privateKey = "ironmaidenironmaidenironmaidenironmaiden";
+const port = process.env.PORT || 3000
 
 // app.use((req, res, next) => {
 
@@ -60,6 +61,6 @@ app.use('/api/notes', noteRouter);
 
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(port, () => {
   console.log('Server started on port 8090');
 });
