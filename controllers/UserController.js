@@ -54,7 +54,7 @@ const userController = {
                     from: "simple.note@bk.ru",
                     to: req.body.email,
                     subject: "Login Confirm Code",
-                    text: "Please, verify your account http://localhost:5173/signup/verify?code=" + newConfCode,
+                    text: "Please, verify your account https://app-simplenote-clone.netlify.app/signup/verify?code=" + newConfCode,
                 };
         
                 transporter.sendMail(mailOptions, function (error, info) {
