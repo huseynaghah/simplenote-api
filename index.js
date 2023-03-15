@@ -45,7 +45,7 @@ const port = process.env.PORT || 3000
 // })
 
 
-mongoose.connect('mongodb+srv://simplenote-render:DYnImvdnqY3PP5dE@cluster0.knjxr8n.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://haqverdievh:Georgia2019++@cluster0.knjxr8n.mongodb.net/simplenote', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
